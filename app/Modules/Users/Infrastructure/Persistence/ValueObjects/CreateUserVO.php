@@ -13,15 +13,6 @@ readonly class CreateUserVO
     ) {
     }
 
-    public function asArray(): array
-    {
-        return [
-            'name'     => $this->name,
-            'email'    => $this->email,
-            'password' => $this->password,
-        ];
-    }
-
     public static function fromRequest(array $data): self
     {
         return new self(
@@ -29,5 +20,14 @@ readonly class CreateUserVO
             $data['email'],
             $data['password']
         );
+    }
+
+    public function asArray(): array
+    {
+        return [
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => $this->password,
+        ];
     }
 }

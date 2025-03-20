@@ -9,7 +9,7 @@ return [
         'password' => 'пароль',
         'password_confirmation' => 'подтверждение пароля',
     ],
-    
+
     'validation' => [
         'name' => [
             'required' => 'Поле :attribute обязательно для заполнения',
@@ -27,7 +27,7 @@ return [
             'confirmed' => 'Пароли не совпадают',
         ],
     ],
-    
+
     'messages' => [
         'success' => 'Пользователь успешно создан',
         'error' => 'Ошибка при создании пользователя',

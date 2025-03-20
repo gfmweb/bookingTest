@@ -16,7 +16,7 @@ readonly class CreateResourceAction
     ) {
     }
 
-    public function handle(string $name, string $type, ?string $description = null ): Resource
+    public function handle(string $name, string $type, ?string $description = null): Resource
     {
         $data = [
             'name' => $name,

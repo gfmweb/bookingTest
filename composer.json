@@ -26,17 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/",
-            "App\\Modules\\Resources\\Tests\\": "app/Modules/Resources/Tests",
-            "App\\Modules\\Bookings\\Tests\\": "app/Modules/Bookings/Tests",
-            "App\\Modules\\Users\\Tests\\": "app/Modules/Users/Tests"
+            "Tests\\": "tests/"
         }
     },
     "scripts": {

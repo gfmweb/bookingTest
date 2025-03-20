@@ -29,21 +29,24 @@ readonly class ResourceRepository implements ResourceRepositoryInterface
     {
         $resource = $this->model
             ->where('id', $id)
-            ->with(['resourceType', 'bookings' => function ($query) use ($perPage, $page) {
-                $query->orderBy('start_time', 'desc')
-                    ->with('user:id,name,email')
-                    ->skip(($page - 1) * $perPage)
-                    ->take($perPage);
-            }])
+            ->with([
+                'resourceType',
+                'bookings' => function ($query) use ($perPage, $page) {
+                    $query->orderBy('start_time', 'desc')
+                        ->with('user:id,name,email')
+                        ->skip(($page - 1) * $perPage)
+                        ->take($perPage);
+                }
+            ])
             ->first();
-    
+
         if (!$resource) {
             return [
                 'resource' => null,
                 'bookings' => collect(),
             ];
         }
-    
+
         return [
             'resource' => [
                 'id' => $resource->id,

@@ -15,11 +15,6 @@ class Booking extends Model
 {
     use HasFactory;
 
-    protected function factory(): BookingFactory
-    {
-        return BookingFactory::new();
-    }
-
     protected $fillable = ['resource_id', 'user_id', 'start_time', 'end_time'];
 
     public function resource(): BelongsTo
@@ -30,6 +25,11 @@ class Booking extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    protected function factory(): BookingFactory
+    {
+        return BookingFactory::new();
     }
 
 

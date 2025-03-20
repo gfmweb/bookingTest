@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 readonly class GetBookingHistoryAction
 {
     public function __construct(
-     private ResourceRepositoryInterface $repository
+        private ResourceRepositoryInterface $repository
     ) {
     }
 

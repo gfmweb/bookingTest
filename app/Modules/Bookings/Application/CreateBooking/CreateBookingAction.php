@@ -17,6 +17,6 @@ readonly class CreateBookingAction
 
     public function handle(CreateBookingVO $bookingVO): Booking
     {
-       return $this->repository->create($bookingVO->asArray());
+        return $this->repository->create($bookingVO->asArray());
     }
 }

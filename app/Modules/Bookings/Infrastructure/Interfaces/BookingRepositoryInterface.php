@@ -10,5 +10,6 @@ use App\Modules\Bookings\Infrastructure\ValueObjects\CreateBookingVO;
 interface BookingRepositoryInterface
 {
     public function create(array $data): Booking;
-    public  function destroy(int $bookingId): void;
+
+    public function destroy(int $bookingId): void;
 }

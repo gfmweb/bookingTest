@@ -14,31 +14,6 @@ class BookingObserver
         $this->checkResourceAvailability($booking);
     }
 
-
-    public function created(Booking $booking): void
-    {
-        Log::info('Booking created', [
-            'booking_id' => $booking->id,
-            'resource_id' => $booking->resource_id,
-            'user_id' => $booking->user_id,
-            'start_time' => $booking->start_time,
-            'end_time' => $booking->end_time
-        ]);
-    }
-
-
-    /**
-     * Handle the Booking "deleted" event.
-     */
-    public function deleted(Booking $booking): void
-    {
-        Log::info('Booking deleted', [
-            'booking_id' => $booking->id,
-            'resource_id' => $booking->resource_id,
-            'user_id' => $booking->user_id
-        ]);
-    }
-
     /**
      * Проверка доступности ресурса на указанное время
      */
@@ -62,9 +37,32 @@ class BookingObserver
                 return $query->where('id', '!=', $booking->id);
             })
             ->exists();
-    
+
         if ($existingBooking) {
             throw new \RuntimeException('Ресурс занят. Пожалуйста, выберите другое время');
         }
+    }
+
+    public function created(Booking $booking): void
+    {
+        Log::info('Booking created', [
+            'booking_id' => $booking->id,
+            'resource_id' => $booking->resource_id,
+            'user_id' => $booking->user_id,
+            'start_time' => $booking->start_time,
+            'end_time' => $booking->end_time
+        ]);
+    }
+
+    /**
+     * Handle the Booking "deleted" event.
+     */
+    public function deleted(Booking $booking): void
+    {
+        Log::info('Booking deleted', [
+            'booking_id' => $booking->id,
+            'resource_id' => $booking->resource_id,
+            'user_id' => $booking->user_id
+        ]);
     }
 }

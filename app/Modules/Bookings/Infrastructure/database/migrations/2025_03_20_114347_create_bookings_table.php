@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Modules\Resources\Infrastructure\Persistence\Models\Resource;
 use App\Modules\Users\Infrastructure\Persistence\Models\User;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */

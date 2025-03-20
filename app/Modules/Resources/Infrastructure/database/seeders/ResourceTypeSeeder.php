@@ -14,7 +14,7 @@ class ResourceTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        $examples = ['Велосипед','Самокат','Квартира','Машина','PowerBank'];
+        $examples = ['Велосипед', 'Самокат', 'Квартира', 'Машина', 'PowerBank'];
         $insertData = [];
         foreach ($examples as $example) {
             $insertData[] = ['name' => $example];

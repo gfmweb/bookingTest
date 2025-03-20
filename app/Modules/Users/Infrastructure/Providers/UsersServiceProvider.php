@@ -36,6 +36,6 @@ class UsersServiceProvider extends ServiceProvider
         }
         $this->loadMigrationsFrom($migrationsDir);
         $this->loadTranslationsFrom($langPath, 'users');
-        $this->mergeConfigFrom(dirname(__DIR__, 1). '/config/users.php','users');
+        $this->mergeConfigFrom(dirname(__DIR__, 1) . '/config/users.php', 'users');
     }
 }

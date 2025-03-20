@@ -16,21 +16,15 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected function factory(): UserFactory
-    {
-        return UserFactory::new();
-    }
     protected $fillable = [
         'name',
         'email',
         'password',
     ];
-
     protected $hidden = [
         'password',
         'remember_token',
     ];
-
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
@@ -39,5 +33,10 @@ class User extends Authenticatable
     public function bookings(): HasMany
     {
         return $this->hasMany(Booking::class);
+    }
+
+    protected function factory(): UserFactory
+    {
+        return UserFactory::new();
     }
 }

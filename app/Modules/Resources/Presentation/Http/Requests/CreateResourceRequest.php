@@ -23,8 +23,8 @@ class CreateResourceRequest extends FormRequest
     public function rules(): array
     {
         return [
-           'name' => 'required|string|max:255',
-           'type' => 'required|string|max:255|exists:resource_types,name',
+            'name' => 'required|string|max:255',
+            'type' => 'required|string|max:255|exists:resource_types,name',
             'description' => 'nullable|string',
         ];
     }

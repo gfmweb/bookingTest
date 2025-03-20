@@ -9,9 +9,13 @@ use Illuminate\Support\Collection;
 
 interface UserRepositoryInterface
 {
-   public function list(): Collection;
-   public function get(int $id): ?User;
-   public function store(array $data): User;
-   public function update(int $id, array $data): User;
-   public function delete(int $id): void;
+    public function list(): Collection;
+
+    public function get(int $id): ?User;
+
+    public function store(array $data): User;
+
+    public function update(int $id, array $data): User;
+
+    public function delete(int $id): void;
 }

@@ -16,16 +16,6 @@ readonly class CreateBookingVO
     ) {
     }
 
-    public function asArray(): array
-    {
-        return [
-            'resource_id' => $this->resourceId,
-            'user_id' => $this->userId,
-            'start_time' => $this->startTime->format('Y-m-d H:i:s'),
-            'end_time' => $this->endTime->format('Y-m-d H:i:s'),
-        ];
-    }
-
     public static function fromRequest(array $data): self
     {
         return new self(
@@ -34,5 +24,15 @@ readonly class CreateBookingVO
             Carbon::parse($data['start_time']),
             Carbon::parse($data['end_time'])
         );
+    }
+
+    public function asArray(): array
+    {
+        return [
+            'resource_id' => $this->resourceId,
+            'user_id' => $this->userId,
+            'start_time' => $this->startTime->format('Y-m-d H:i:s'),
+            'end_time' => $this->endTime->format('Y-m-d H:i:s'),
+        ];
     }
 }

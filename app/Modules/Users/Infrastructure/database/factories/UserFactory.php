@@ -11,6 +11,7 @@ use App\Modules\Users\Infrastructure\Persistence\Models\User;
 class UserFactory extends Factory
 {
     protected $model = User::class;
+
     public function definition(): array
     {
         return [
@@ -24,7 +25,7 @@ class UserFactory extends Factory
 
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
     }

@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 readonly class GetResourceTypeAction
 {
     public function __construct(
-     private ResourceTypeRepositoryInterface $repository
+        private ResourceTypeRepositoryInterface $repository
     ) {
     }
 

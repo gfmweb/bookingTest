@@ -9,7 +9,7 @@ use App\Modules\Bookings\Infrastructure\Interfaces\BookingRepositoryInterface;
 readonly class RejectBookingAction
 {
     public function __construct(
-     private BookingRepositoryInterface $repository,
+        private BookingRepositoryInterface $repository,
     ) {
     }
 
