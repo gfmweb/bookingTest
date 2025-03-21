@@ -17,7 +17,7 @@ class ResourceTypeSeeder extends Seeder
         $examples = ['Велосипед', 'Самокат', 'Квартира', 'Машина', 'PowerBank'];
         $insertData = [];
         foreach ($examples as $example) {
-            $insertData[] = ['name' => $example];
+            $insertData[] = ['name' => $example, 'created_at' => now(), 'updated_at' => now()];
         }
         ResourceType::insert($insertData);
     }

@@ -10,18 +10,22 @@ use App\Modules\Resources\Application\GetBookingHistory\GetBookingHistoryAction;
 use App\Modules\Resources\Application\GetResourceTypes\GetResourceTypeAction;
 use App\Modules\Resources\Application\ResourcesList\GetResourcesListAction;
 use App\Modules\Resources\Presentation\Http\Requests\CreateResourceRequest;
+use App\Modules\Resources\Presentation\Http\Resources\ResourceResource;
+use App\Modules\Resources\Presentation\Http\Resources\ResourceTypeResource;
 use Illuminate\Http\JsonResponse;
 
 class ResourceController extends Controller
 {
     public function list(GetResourcesListAction $action): JsonResponse
     {
-        return response()->json($action->handle(), 200, [], 256);
+        $resources = $action->handle();
+        return response()->json(ResourceResource::collection($resources));
     }
 
     public function getTypes(GetResourceTypeAction $action): JsonResponse
     {
-        return response()->json($action->handle(), 200, [], 256);
+        $types = $action->handle();
+        return response()->json(ResourceTypeResource::collection($types));
     }
 
     public function create(CreateResourceAction $action, CreateResourceRequest $request): JsonResponse

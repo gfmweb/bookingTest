@@ -39,7 +39,7 @@ class BookingObserver
             ->exists();
 
         if ($existingBooking) {
-            throw new \RuntimeException('Ресурс занят. Пожалуйста, выберите другое время');
+            throw new \RuntimeException(__('bookings::booking.errors.resource_unavailable'));
         }
     }
 

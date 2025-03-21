@@ -28,4 +28,23 @@ class CreateResourceRequest extends FormRequest
             'description' => 'nullable|string',
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'name.required' => __('resources::create_resource.validation.name.required'),
+            'name.string' => __('resources::create_resource.validation.name.string'),
+            'name.max' => __('resources::create_resource.validation.name.max'),
+            'type.required' => __('resources::create_resource.validation.type.required'),
+            'type.string' => __('resources::create_resource.validation.type.string'),
+            'type.max' => __('resources::create_resource.validation.type.max'),
+            'type.exists' => __('resources::create_resource.validation.type.exists'),
+            'description.string' => __('resources::create_resource.validation.description.string'),
+        ];
+    }
 }

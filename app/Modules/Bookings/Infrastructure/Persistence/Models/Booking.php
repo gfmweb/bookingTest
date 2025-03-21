@@ -10,7 +10,15 @@ use App\Modules\Users\Infrastructure\Persistence\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
+/**
+ * @property integer $resource_id
+ * @property Carbon $start_time
+ * @property Carbon $end_time
+ * @property integer $id
+ * @property integer $user_id
+ */
 class Booking extends Model
 {
     use HasFactory;

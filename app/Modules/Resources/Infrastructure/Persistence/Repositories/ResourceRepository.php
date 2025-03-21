@@ -25,38 +25,50 @@ readonly class ResourceRepository implements ResourceRepositoryInterface
         return $this->model->create($data)->load('resourceType');
     }
 
-    public function getBookingsByResourceId(int $id, int $perPage = 15, int $page = 1): array
-    {
-        $resource = $this->model
-            ->where('id', $id)
-            ->with([
-                'resourceType',
-                'bookings' => function ($query) use ($perPage, $page) {
-                    $query->orderBy('start_time', 'desc')
-                        ->with('user:id,name,email')
-                        ->skip(($page - 1) * $perPage)
-                        ->take($perPage);
-                }
-            ])
-            ->first();
+public function getBookingsByResourceId(int $id, int $perPage = 15, int $page = 1): array
+{
+    $resource = $this->model
+        ->where('id', $id)
+        ->with([
+            'resourceType',
+            'bookings' => function ($query) use ($perPage, $page) {
+                $query->orderBy('start_time', 'desc')
+                    ->with('user:id,name,email')
+                    ->skip(($page - 1) * $perPage)
+                    ->take($perPage);
+            }
+        ])
+        ->first();
 
-        if (!$resource) {
-            return [
-                'resource' => null,
-                'bookings' => collect(),
-            ];
-        }
-
+    if (!$resource) {
         return [
-            'resource' => [
-                'id' => $resource->id,
-                'name' => $resource->name,
-                'resource_type' => [
-                    'id' => $resource->resourceType->id,
-                    'name' => $resource->resourceType->name,
-                ],
-            ],
-            'bookings' => $resource->bookings,
+            'resource' => null,
+            'bookings' => collect(),
         ];
     }
-}
+
+    return [
+        'resource' => [
+            'id' => $resource->id,
+            'name' => $resource->name,
+            'resource_type' => [
+                'id' => $resource->resourceType->id,
+                'name' => $resource->resourceType->name,
+            ],
+        ],
+        'bookings' => $resource->bookings->map(function ($booking) {
+            return [
+                'id' => $booking->id,
+                'user' => [
+                    'id' => $booking->user->id,
+                    'name' => $booking->user->name,
+                    'email' => $booking->user->email,
+                ],
+                'start_time' => $booking->start_time,
+                'end_time' => $booking->end_time,
+                'created_at' => $booking->created_at->toDateTimeString(),
+                'updated_at' => $booking->updated_at->toDateTimeString(),
+            ];
+        }),
+    ];
+}}

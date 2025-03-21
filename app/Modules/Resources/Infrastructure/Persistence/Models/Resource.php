@@ -6,10 +6,11 @@ namespace App\Modules\Resources\Infrastructure\Persistence\Models;
 
 use App\Modules\Bookings\Infrastructure\Persistence\Models\Booking;
 use App\Modules\Resources\Infrastructure\database\factories\ResourceFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Modules\Resources\Infrastructure\Persistence\Casts\HumanReadableDateCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Resource extends Model
 {
@@ -20,6 +21,11 @@ class Resource extends Model
         'description',
         'resource_type_id'
     ];
+    protected $casts = [
+        'created_at' => HumanReadableDateCast::class,
+        'updated_at' => HumanReadableDateCast::class,
+    ];
+
 
     public function resourceType(): BelongsTo
     {

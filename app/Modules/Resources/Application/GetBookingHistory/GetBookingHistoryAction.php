@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Modules\Resources\Application\GetBookingHistory;
 
-use App\Modules\Bookings\Infrastructure\Interfaces\BookingRepositoryInterface;
 use App\Modules\Resources\Infrastructure\Interfaces\ResourceRepositoryInterface;
-use Illuminate\Support\Collection;
 
 readonly class GetBookingHistoryAction
 {

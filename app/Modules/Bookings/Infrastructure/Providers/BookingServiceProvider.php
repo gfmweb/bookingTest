@@ -40,6 +40,7 @@ class BookingServiceProvider extends ServiceProvider
         }
         $this->loadMigrationsFrom($migrationsDir);
         $this->loadTranslationsFrom($langPath, 'booking');
+        $this->loadTranslationsFrom($langPath, 'create_booking');
         $this->mergeConfigFrom(dirname(__DIR__, 1) . '/config/booking.php', 'booking');
     }
 }

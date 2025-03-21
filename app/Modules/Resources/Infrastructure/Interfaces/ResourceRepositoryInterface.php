@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Modules\Resources\Infrastructure\Interfaces;
 
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 use App\Modules\Resources\Infrastructure\Persistence\Models\Resource;
+use stdClass;
 
 interface ResourceRepositoryInterface
 {
